@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Siggaard & Hansen Technology</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,500" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        h1, h2, h3 {
+            font-weight: 500;
+        }
+
+        body {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        header {
+            width: 100%;
+            border-bottom: 1px solid black;
+            margin-bottom: 32px;
+            display: flex;
+            justify-content: center;
+        }
+
+        header > div {
+            display: flex;
+            padding: 16px;
+            align-items: center;
+            max-width: 1100px;
+            width: 100%
+        }
+
+        header img {
+            height: 60px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-self: flex-end;
+        }
+        nav a {
+            text-decoration: none;
+            color: black;
+            margin-right: 30px;
+        }
+        nav a:visited {
+            color: black;
+        }
+        nav a:hover {
+            font-weight: bold;
+        }
+
+        main {
+            max-width: 900px;
+            padding: 0 16px;
+        }
+
+        article {
+            display: flex;
+            margin-bottom: 16px;
+        }
+
+        article img {
+            width: 55%;
+            height: 55%;
+        }
+        
+        article p {
+            line-height: 1.25;
+        }
+
+        #about div, #potato div {
+            margin-right: 16px;
+        }
+
+        #farming {
+            flex-direction: row-reverse;
+        }
+        #farming div {
+            margin-left: 16px;
+        }
+
+        .spacer {
+            flex: 1;
+        }
+
+        #contact_container a {
+            color: black;
+        }
+        #contact_container a:visited {
+            color: black;
+        }
+
+        #contact_section {
+            display: flex;
+            margin-bottom: 32px;
+        }
+        #contact_info {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+        }
+        #contact_info p {
+            margin: 0;
+        }
+        #phone-numbers {
+            margin-bottom: 16px !important;
+        }
+        #phone-numbers a {
+            text-decoration: none;
+        }
+        #contact_form {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+            align-self: center;
+        }
+        input {
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #dedede;
+            margin-bottom: 8px;
+        }
+        textarea {
+            padding: 8px;
+            font-size: 13px;
+            border: 1px solid #dedede;
+            margin-bottom: 8px;
+            min-width: 100%;
+            max-width: 100%;
+            min-height: 100px;
+            max-height: 100px;
+        }
+        button {
+            align-self: flex-end;
+            padding: 8px;
+            background: transparent;
+            border: 1px solid #dedede;
+        }
+
+
+        @media (max-width: 700px) {
+            article {
+                flex-direction: column !important;
+            }
+            article img {
+                width: 90%;
+                align-self: center;
+            }
+
+            header div {
+                flex-direction: column;
+            }
+        }
+    </style>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116875644-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-116875644-1');
+
+        document.querySelector("form").addEventListener("submit", (evt) => {
+            evt.preventDefault()
+            
+            const mail = document.querySelector("input[name=email]").value
+            const subject = document.querySelector("input[name=subject]").value
+            const message = document.querySelector("input[name=message").value
+
+            fetch("/message", {
+                method: "POST",
+                headers: { "content-type": "application/json" },
+                body: JSON.stringify({ mail, subject, message })
+            })
+
+            return false;
+        })
+    </script>
+</head>
+<body>
+    <header>
+        <div>
+            <img src="/images/logo.png" alt="logo">
+            <div class="spacer"></div>
+            <nav>
+                <a href="#om-os">OM OS</a>
+                <a href="#landbrug">LANDBRUG</a>
+                <a href="#kontakt">KONTAKT</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <article id="about">
+            <div>
+                <h1 id="om-os">Om Os</h1>
+                <p>Siggaard &amp; Hansen Technology specialiser sig i præcisions sprøjtning ved hjælp af droner. Vi benytter vores inhouse designede droner, til at analysere dine marker, og levere højkvalitets resultater så hurtigt som muligt ved hjælp af den nyeste computer teknologi. Vores mål er at hjælpe landmanden med at spare tid og penge, så der kan fokuseres på andre opgaver. Vi er lokaliseret i Skanderborg kommune.</p>
+            </div>
+            <img src="/images/image-1.jpg" alt="billede af drone">
+        </article>
+        <article id="farming">
+            <div>
+                <h1 id="landbrug">Landbrug</h1>
+                <p>Ved hjælp af droner kortlægger vi dine marker, og analysere dataene, hvorpå vi kan se planeternes helbred og derudfra vurdere hvor og hvor meget det skal sprøjtes. Ved hjælp af vores special udviklede algoritme, kan vi levere resultater ekstremt hurtigt.</p>
+            </div>
+            <img src="/images/wheat.jpg" alt="hvede">
+        </article>
+        <article id="potato">
+            <div>
+                <h1 id="potatoes">Kartofler</h1>
+                <p>Vores hovedfokus er bekæmpelse af kartoffelskimmel, vi kan ved hjælp af droner se hvor svampen er og derfor hvor der skal sprøjtes for at eliminere sygdommen så hurtigt og præcist som muligt. Vi kan selfølgelig også udføre andre opgaver inden for landbruget.</p>
+            </div>
+            <img src="/images/potatoes.jpg" alt="kartoffler">
+        </article>
+        <section id="contact_container">
+            <h1 id="kontakt">Kontakt</h1>
+            <p>Hvis du har nogle spørgsmål kan du altid kontakte os over mail, telefon eller ved at sende en besked herunder.</p>
+            <div id="contact_section">
+                <div id="contact_info">
+                    <h3>Mail</h3>
+                    <p><a href="mailto:mail@shtechnology.dk">mail@shtechnology.dk</a></p>
+                    <h3>Telefon</h3>
+                    <p id="phone-numbers">
+                        <a href="tel:93939002">93939002</a>
+                        <br>
+                        <a href="tel:53524853">53524853</a>
+                    </p>
+                    <p>
+                        Siggaard &amp; Hansen Technology IVS
+                        <br>
+                        Blåmejsevej 3
+                        <br>
+                        8464 Galten
+                        <br>
+                        CVR 39085186
+                    </p>
+                </div>
+                <form id="contact_form">
+                    <input name="email" type="email" placeholder="mail" required>
+                    <input name="subject" type="text" placeholder="emne" required>
+                    <textarea name="message" placeholder="besked" required></textarea>
+                    <button type="submit">SEND</button>
+                </form>
+            </div>
+            
+        </section>
+        
+    </main>
+</body>
+</html>

@@ -4,12 +4,14 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "start": "node main.js"
+    "start": "node main.js",
+    "start-dev": "nodemon main.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "mathias hansen",
+  "license": "NONE",
   "dependencies": {
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "body-parser": "^1.18.2"
   }
 }
