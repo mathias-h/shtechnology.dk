@@ -176,21 +176,23 @@
 
         gtag('config', 'UA-116875644-1');
 
-        document.querySelector("form").addEventListener("submit", (evt) => {
-            evt.preventDefault()
-            
-            const mail = document.querySelector("input[name=email]").value
-            const subject = document.querySelector("input[name=subject]").value
-            const message = document.querySelector("input[name=message").value
-
-            fetch("/message", {
-                method: "POST",
-                headers: { "content-type": "application/json" },
-                body: JSON.stringify({ mail, subject, message })
+        onload = () => {
+            document.querySelector("form").addEventListener("submit", (evt) => {
+                evt.preventDefault()
+                
+                const mail = document.querySelector("input[name=email]").value
+                const subject = document.querySelector("input[name=subject]").value
+                const message = document.querySelector("input[name=message").value
+                
+                fetch("/message", {
+                    method: "POST",
+                    headers: { "content-type": "application/json" },
+                    body: JSON.stringify({ mail, subject, message })
+                })
+                
+                return false;
             })
-
-            return false;
-        })
+        }
     </script>
 </head>
 <body>
